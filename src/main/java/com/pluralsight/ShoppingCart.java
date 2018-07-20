@@ -59,5 +59,13 @@ public class ShoppingCart {
    }
 
  }
+ public void updateCartItem(int index, int quantity) {
+   //The ShoppingCart class has a class variable that is an ArrayList of CartItems called cartItems. Call get() on cartItems and pass in the index as a parameter and save the result to a CartItem variable. Then call setQuantity() on that CartItem and pass in the quantity parameter. We should also wrap this in a try/catch since get() can throw an IndexOutOfBoundsException.
+  try {CartItem item = getCartItem(index);
+   item.setQuantity(quantity);
 
+  }
+  catch (IndexOutOfBoundsException e) {};
+
+}
 }
