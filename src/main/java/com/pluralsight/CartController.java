@@ -53,6 +53,9 @@ public class CartController extends HttpServlet {
 				case "/addcart":
 					 addToCart(request, response);
            break;
+        case "/delete":
+           deleteFromCart(request, response);
+           break;
         default:
            break;
 			}
@@ -94,4 +97,11 @@ public class CartController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
+  private void deleteFromCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    HttpSession mySesh = request.getSession();
+
+    int muhParams = Integer.parseInt( request.getParameter("index"));
+    ShoppingCart shizzleCizzle = (ShoppingCart) mySesh.getAttribute("cart");
+    shizzleCizzle.deleteCartItem(muhParams);
+  }
 }

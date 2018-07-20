@@ -25,15 +25,15 @@ public class ShoppingCart {
  public CartItem getCartItem(int iItemIndex) {
   CartItem cartItem = null;
   if(cartItems.size()>iItemIndex) {
-   cartItem = (CartItem) cartItems.get(iItemIndex);
+   cartItem =  cartItems.get(iItemIndex);
   }
   return cartItem;
  }
 
- public ArrayList getCartItems() {
+ public ArrayList<CartItem> getCartItems() {
   return cartItems;
  }
- public void setCartItems(ArrayList cartItems) {
+ public void setCartItems(ArrayList<CartItem> cartItems) {
   this.cartItems = cartItems;
  }
  public double getOrderTotal() {
@@ -46,11 +46,18 @@ public class ShoppingCart {
  protected void calculateOrderTotal() {
   double dblTotal = 0;
   for(int counter=0;counter<cartItems.size();counter++) {
-   CartItem cartItem = (CartItem) cartItems.get(counter);
+   CartItem cartItem =  cartItems.get(counter);
    dblTotal+=cartItem.getTotalCost();
 
   }
   setOrderTotal(dblTotal);
+ }
+ public void deleteCartItem(int index) {
+   try {
+    cartItems.remove(index);
+   } catch(IndexOutOfBoundsException e){
+   }
+
  }
 
 }
